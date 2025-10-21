@@ -105,7 +105,7 @@ class ResourcesHandler {
 		$ability = $resource->get_ability();
 
 		try {
-			$has_permission = $ability->check_permissions( null );
+			$has_permission = $ability->check_permissions();
 			if ( true !== $has_permission ) {
 				// Extract detailed error message and code if WP_Error was returned
 				$error_message  = 'Access denied for resource: ' . $resource->get_name();
@@ -128,7 +128,7 @@ class ResourcesHandler {
 				);
 			}
 
-			$contents = $ability->execute( null );
+			$contents = $ability->execute();
 
 			return array(
 				'contents'  => $contents,
