@@ -293,7 +293,7 @@ The MCP Adapter automatically creates a default server that exposes all register
 
 ```php
 // Simply register a WordPress ability
-add_action( 'abilities_api_init', function() {
+add_action( 'wp_abilities_api_init', function() {
     wp_register_ability( 'my-plugin/get-posts', [
         'label' => 'Get Posts',
         'description' => 'Retrieve WordPress posts with optional filtering',

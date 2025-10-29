@@ -9,7 +9,7 @@ Tools execute actions and return results. Here's a simple post creation tool:
 ```php
 <?php
 // Register the ability
-add_action( 'abilities_api_init', function() {
+add_action( 'wp_abilities_api_init', function() {
     wp_register_ability( 'my-plugin/create-post', [
         'label' => 'Create Post',
         'description' => 'Creates a new WordPress post with the specified content',
@@ -122,7 +122,7 @@ Resources provide access to data. They require a `uri` in the ability meta:
 ```php
 <?php
 // Register the ability as a resource
-add_action( 'abilities_api_init', function() {
+add_action( 'wp_abilities_api_init', function() {
     wp_register_ability( 'my-plugin/site-config', [
         'label' => 'Site Configuration',
         'description' => 'WordPress site configuration and settings',
@@ -175,7 +175,7 @@ Prompts generate structured messages for language models:
 ```php
 <?php
 // Register the ability as a prompt
-add_action( 'abilities_api_init', function() {
+add_action( 'wp_abilities_api_init', function() {
     wp_register_ability( 'my-plugin/code-review', [
         'label' => 'Code Review Prompt',
         'description' => 'Generate a code review prompt with specific focus areas',

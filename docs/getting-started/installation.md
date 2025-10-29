@@ -81,7 +81,7 @@ class MyMcpPlugin {
     }
     
     private function register_abilities() {
-        add_action( 'abilities_api_init', function() {
+        add_action( 'wp_abilities_api_init', function() {
             wp_register_ability( 'my-plugin/get-posts', [
                 'label' => 'Get Posts',
                 'description' => 'Retrieve WordPress posts',
