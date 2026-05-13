@@ -19,6 +19,7 @@ jobs:
   tag:
     name: Upload New Release
     runs-on: ubuntu-24.04
+    timeout-minutes: 10
     permissions:
       contents: write # Required to clone the repo and to upload the release asset.
 
