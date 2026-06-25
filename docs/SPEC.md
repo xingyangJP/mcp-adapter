@@ -105,7 +105,7 @@ API キーは Secret Manager の `wp-central-mcp-api-key` に保存。
 
 1. WP サイトに `mcp-adapter` をインストール・有効化
 2. Secret Manager の `wp-sites-config` にサイト情報を追加
-3. ※ 再デプロイの要否は Secret Manager の読み取りタイミングによる（TBD）
+3. **再デプロイ不要** — Secret Manager はリクエストごとに読み取るため、追加後すぐに反映される
 
 ---
 
