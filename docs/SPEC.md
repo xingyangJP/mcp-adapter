@@ -97,7 +97,7 @@ API キーは Secret Manager の `wp-central-mcp-api-key` に保存。
 | サービス名 | `wp-central-mcp` |
 | プロジェクト | `wordpressmcp`（621428460182） |
 | リージョン | asia-northeast1 |
-| デプロイ URL | デプロイ後に確定 |
+| デプロイ URL | https://wp-central-mcp-621428460182.asia-northeast1.run.app |
 
 ---
 
