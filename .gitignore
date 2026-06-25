@@ -1,0 +1,18 @@
+# ZIPアーティファクト
+*.zip
+
+# 機密情報
+.mcp.json
+.env
+.env.*
+secrets/
+*.secret
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# OS
+.DS_Store
