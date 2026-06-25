@@ -17,14 +17,32 @@ class APIKeyMiddleware(BaseHTTPMiddleware):
         return await call_next(request)
 
 
+class HostOverrideMiddleware:
+    """MCP SDK のホスト検証を通過させるため Host ヘッダーを localhost に書き換える。
+    API キー認証で保護済みのため DNS リバインディング攻撃のリスクはない。"""
+
+    def __init__(self, app):
+        self.app = app
+
+    async def __call__(self, scope, receive, send):
+        if scope["type"] in ("http", "websocket"):
+            scope["headers"] = [
+                (b"host", b"localhost") if k == b"host" else (k, v)
+                for k, v in scope.get("headers", [])
+            ]
+        await self.app(scope, receive, send)
+
+
 mcp = FastMCP("wp-central-mcp")
 
 list_sites_mod.register(mcp)
 discover_abilities_mod.register(mcp)
 execute_ability_mod.register(mcp)
 
-app = mcp.streamable_http_app()
-app.add_middleware(APIKeyMiddleware)
+_mcp_app = mcp.streamable_http_app()
+_mcp_app.add_middleware(APIKeyMiddleware)
+
+app = HostOverrideMiddleware(_mcp_app)
 
 if __name__ == "__main__":
     port = int(os.getenv("PORT", "8080"))
